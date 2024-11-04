@@ -232,7 +232,7 @@ def main():
                     highscore = max(score_ints)
 
         # Renderiza o texto do highscore na tela
-        text = font.render("High Score: " + str(highscore) + "  Points: " + str(points), True, FONT_COLOR)
+        text = font.render("Maior Score: " + str(highscore) + "  Points: " + str(points), True, FONT_COLOR)
         textRect = text.get_rect()
         textRect.center = (900, 40)
         SCREEN.blit(text, textRect)
@@ -258,7 +258,7 @@ def main():
         nonlocal pause
         pause = True
         font = pygame.font.Font("C:/Windows/WinSxS/amd64_microsoft-windows-f..ruetype-comicsansms_31bf3856ad364e35_10.0.22621.1_none_3deaef772e20c404/comic.ttf", 30)
-        text = font.render("Game Paused, Press 'u' to Unpause", True, FONT_COLOR)
+        text = font.render("Jogo Pausado, aperte 'u' para retomar", True, FONT_COLOR)
         textRect = text.get_rect()
         textRect.center = (SCREEN_WIDTH // 2, SCREEN_HEIGHT  // 3)
         SCREEN.blit(text, textRect)
@@ -338,17 +338,17 @@ def menu(death_count):
         font = pygame.font.Font("C:/Windows/WinSxS/amd64_microsoft-windows-f..ruetype-comicsansms_31bf3856ad364e35_10.0.22621.1_none_3deaef772e20c404/comic.ttf", 20)
                 
         if death_count == 0:
-            text = font.render("Press any Key to Start", True, (255,255,255))
+            text = font.render("Aperte qualquer tecla para iniciar", True, (255,255,255))
         elif death_count > 0:
-            text = font.render("Press any Key to Restart", True, (255,255,255))
-            score = font.render("Your Score: " + str(points), True, (255,255,255))    
+            text = font.render("Aperte qualquer tecla para continuar", True, (255,255,255))
+            score = font.render("Seu Score: " + str(points), True, (255,255,255))    
             scoreRect = score.get_rect()
             scoreRect.center = (SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2 + 50)
             SCREEN.blit(score, scoreRect)
             
             save_highscore(highscore)
             hs_score_text = font.render(
-                "High Score : " + str(highscore), True, FONT_COLOR
+                "Maior Score : " + str(highscore), True, FONT_COLOR
             )
             hs_score_rect = hs_score_text.get_rect()
             hs_score_rect.center = (SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2 + 100)
@@ -363,13 +363,6 @@ def menu(death_count):
                     conteudo_existente = file.read() 
                 with open("TopLeader.txt", "w") as f:
                     f.write(f"{initials}: {highscore}\n{conteudo_existente}")
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    run = False
-                    pygame.quit()
-                    exit()
-                if event.type == pygame.KEYDOWN:
-                    main()
             
         textRect = text.get_rect()
         textRect.center = (SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2)
@@ -379,22 +372,6 @@ def menu(death_count):
         
         os.system('cls')
         
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                run = False
-                pygame.display.quit()
-                pygame.quit()
-                exit()
-            if event.type == pygame.KEYDOWN:
-                main()
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                run = False
-                pygame.display.quit()
-                pygame.quit()
-                exit()
-            if event.type == pygame.KEYDOWN:
-                main()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
