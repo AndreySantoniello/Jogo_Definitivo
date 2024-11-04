@@ -1,17 +1,16 @@
-# !/usr/bin/python
-# -*- coding: utf-8 -*-
 import datetime
 import os
 import random
 import threading
 import pygame
+import os
 
 pygame.init()
 
 # Global Constants
 
-SCREEN_HEIGHT = 600
-SCREEN_WIDTH = 1100
+SCREEN_HEIGHT = 480
+SCREEN_WIDTH = 1050
 SCREEN = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 background_image = pygame.image.load('assets\CityBG.jpg')
 background_image = pygame.transform.scale(background_image, (SCREEN_WIDTH, SCREEN_HEIGHT))
@@ -175,14 +174,14 @@ class SmallCactus(Obstacle):
     def __init__(self, image):
         self.type = random.randint(0, 2)
         super().__init__(image, self.type)
-        self.rect.y = 370
+        self.rect.y = 345
 
 
 class LargeCactus(Obstacle):
     def __init__(self, image):
         self.type = random.randint(0, 2)
         super().__init__(image, self.type)
-        self.rect.y = 370
+        self.rect.y = 345
 
 class Bird(Obstacle):
     BIRD_HEIGHTS = [245, 320]
@@ -198,6 +197,8 @@ class Bird(Obstacle):
             self.index = 0
         SCREEN.blit(self.image[self.index // 5], self.rect)
         self.index += 1
+        
+        os.system('cls')
 
 def main():
     global game_speed, x_pos_bg, y_pos_bg, points, obstacles
@@ -256,7 +257,7 @@ def main():
     def paused():
         nonlocal pause
         pause = True
-        font = pygame.font.Font("freesansbold.ttf", 30)
+        font = pygame.font.Font("C:/Windows/WinSxS/amd64_microsoft-windows-f..ruetype-comicsansms_31bf3856ad364e35_10.0.22621.1_none_3deaef772e20c404/comic.ttf", 30)
         text = font.render("Game Paused, Press 'u' to Unpause", True, FONT_COLOR)
         textRect = text.get_rect()
         textRect.center = (SCREEN_WIDTH // 2, SCREEN_HEIGHT  // 3)
@@ -353,6 +354,8 @@ def menu(death_count):
             hs_score_rect.center = (SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2 + 100)
             SCREEN.blit(hs_score_text, hs_score_rect)
             
+            os.system('cls')
+            
             if points > highscore:
                 highscore = points
                 initials = input("Novo recorde! Insira suas iniciais (3 letras): ")[:3].upper()
@@ -373,6 +376,8 @@ def menu(death_count):
         SCREEN.blit(text, textRect)
         SCREEN.blit(RUNNING[0], (SCREEN_WIDTH // 2 - 20, SCREEN_HEIGHT // 2 - 140))
         pygame.display.update()
+        
+        os.system('cls')
         
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -398,5 +403,7 @@ def menu(death_count):
                 exit()
             if event.type == pygame.KEYDOWN:
                 main()
+                
+        os.system('cls')
 t1 = threading.Thread(target=menu(death_count=0), daemon=True)
 t1.start()
