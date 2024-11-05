@@ -211,7 +211,7 @@ def main():
     x_pos_bg = 0
     y_pos_bg = 450
     points = 0
-    font = pygame.font.Font("C:/Windows/WinSxS/amd64_microsoft-windows-f..ruetype-comicsansms_31bf3856ad364e35_10.0.22621.1_none_3deaef772e20c404/comic.ttf", 20)
+    font = pygame.font.Font("freesansbold.ttf", 20)
     obstacles = []
     death_count = 0
     pause = False
@@ -257,7 +257,7 @@ def main():
     def paused():
         nonlocal pause
         pause = True
-        font = pygame.font.Font("C:/Windows/WinSxS/amd64_microsoft-windows-f..ruetype-comicsansms_31bf3856ad364e35_10.0.22621.1_none_3deaef772e20c404/comic.ttf", 30)
+        font = pygame.font.Font("freesansbold.ttf", 20)
         text = font.render("Jogo Pausado, aperte 'u' para retomar", True, FONT_COLOR)
         textRect = text.get_rect()
         textRect.center = (SCREEN_WIDTH // 2, SCREEN_HEIGHT  // 3)
@@ -335,7 +335,7 @@ def menu(death_count):
     while run:
         SCREEN.fill((44,7,53))  # Tela de morte.
         pygame.display.flip()
-        font = pygame.font.Font("C:/Windows/WinSxS/amd64_microsoft-windows-f..ruetype-comicsansms_31bf3856ad364e35_10.0.22621.1_none_3deaef772e20c404/comic.ttf", 20)
+        font = pygame.font.Font("freesansbold.ttf", 20)
                 
         if death_count == 0:
             text = font.render("Aperte qualquer tecla para iniciar", True, (255,255,255))
